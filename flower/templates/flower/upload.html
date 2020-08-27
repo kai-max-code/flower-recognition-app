@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'flower/css/style_2.css' %}">
+    
+    <head>
+        <meta charset="utf-8">
+        <title>FLOWER SEACHER</title>
+    </head>
+
+    <body>
+        <h2>花検索アプリ</h2>
+        <h1>Flower Searcher</h1>
+        <p>
+            Flower Searcherは、入力された花の種類を認識するアプリです。
+            <br>
+            認識したい花の画像をアップロードしてみましょう。
+        </p>
+        <form enctype="multipart/form-data" action="{% url 'flower:upload' %}" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <br>
+            <div class="div_inline">
+                <div class="blue_button">
+                    <button type="submit">Upload</button>
+                </div>
+                <div class="green_a">
+                    <a href="{% url 'flower:showall' %}">過去の結果一覧を見る</a>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
